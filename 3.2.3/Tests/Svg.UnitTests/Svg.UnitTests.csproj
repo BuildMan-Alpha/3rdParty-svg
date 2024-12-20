@@ -1,0 +1,76 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsTestProject>true</IsTestProject>
+    <TargetFrameworks>netcoreapp2.2;net452;net461</TargetFrameworks>
+    <IsPackable>false</IsPackable>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>svgkey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Configurations>Debug;Release</Configurations>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net452|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETFULL;NET452</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net452|AnyCPU'">
+    <DefineConstants>TRACE;RELEASE;NETFULL;NET452</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net461|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETFULL;NET461</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|AnyCPU'">
+    <DefineConstants>TRACE;RELEASE;NETFULL;NET461</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp2.2|AnyCPU'">
+    <DefineConstants>TRACE;RELEASE;NETCORE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp2.2|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETCORE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Issue204_PrivateFont\BrushScriptMT2.ttf" />
+    <EmbeddedResource Include="AllTests.csv" />
+    <EmbeddedResource Include="PassingTests.csv" />
+    <None Include="svgkey.snk" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Issue204_PrivateFont\Text.svg" />
+    <EmbeddedResource Include="Resources\Issue210_Metafile\3DSceneSnapshotBIG.svg" />
+    <EmbeddedResource Include="Resources\Issue212_MakerEnd\OperatingPlan.svg" />
+    <EmbeddedResource Include="Resources\Issue_Multirender\TestFile.svg" />
+    <EmbeddedResource Include="Resources\Issue225_LargeUri\Speedometer.svg" />
+    <EmbeddedResource Include="Resources\hotfix-image-data-uri\Speedometer.svg" />
+    <EmbeddedResource Include="Resources\Issue_TextElement\Text.svg" />
+    <EmbeddedResource Include="Resources\Issue281_Bounds\BoundsTest.svg" />
+    <EmbeddedResource Include="Resources\Issue_Threading\TestFile.svg" />
+    <EmbeddedResource Include="Resources\Issue508_DashArray\DashArray.svg" />
+    <EmbeddedResource Include="Resources\Issue399_LexerIssue\LexerTestTemplate.svg" />
+    <EmbeddedResource Include="Resources\Issue399_LexerIssue\EmptyDTag.svg" />
+    <EmbeddedResource Include="Resources\Issue518_Entities\Entities.svg" />
+    <EmbeddedResource Include="Resources\ScriptTag\TestFile.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.1.1" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Source\Svg.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp2.2'">
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net452' Or '$(TargetFramework)'=='net461'">
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+
+</Project>
